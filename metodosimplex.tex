@@ -1,0 +1,90 @@
+\documentclass{article}
+
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\title{metodosimplex}
+\author{AlvaroJuan}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduccíon}
+\label{sec:itroduccion}
+
+EL metodo simplex es un algoritmo para resolver problemas de
+programacón lineal.
+Fue inventado por George Bernard Dantzig en el año 1947.
+
+\section{Ejemplo}
+\label{sec:ejemplo}
+
+Resuelve el siguiente problema 
+\begin{equation*}
+ \begin{aligned}
+\text{Maximizar} \quad & 2x_{1}+x_{2}\\
+\text{sujeto a} \quad &
+  \begin{aligned}
+    x_{1}-x_{2}
+    \leq 2\\
+   -2x_{1}+x_{2} &\leq 2\\
+   3x_{1}+4x_{2} &\leq 12\\
+   x_{1}+x_{2} &\geq 1\\
+    x_{1},x_{2} &\geq 0
+  \end{aligned}
+\end{aligned}
+\end{equation*}
+
+Como en una de las desigualdades aparecen las variables del lado
+izquierdo de un simbolo $\geq$, multiplicamos ambos miembros de esa
+desigualdad por $-1$ para obtener la forma estandar.
+
+\begin{equation*}
+ \begin{aligned}
+\text{Maximizar} \quad & 2x_{1}+x_{2}\\
+\text{sujeto a} \quad &
+  \begin{aligned}
+   x_{1}-x_{2}\leq 2\\
+  -2x_{1}+x_{2} &\leq 2\\
+   3x_{1}+4x_{2} &\leq 12\\
+  -x_{1}-x_{2} &\leq -1\\
+  x_{1},x_{2} &\geq 0
+  \end{aligned}
+\end{aligned}
+\end{equation*}
+
+Para obtener la forma simplex, añadimos una variable de holgura
+
+\begin{equation*}
+ \begin{aligned}
+\text{Maximizar} \quad & 2x_{1}+x_{2}\\
+\text{sujeto a} \quad &
+  \begin{aligned}
+   x_{1}-x_{2}+x_3 &= 2\\
+   -2x_{1}+x_{2}+x_4 &= 2\\
+   3x_{1}+4x_{2}+x_5 &= 12\\
+  -x_{1}-x_{2}+x_6 &=-1\\
+  x_{1},x_{2},x_3,x_4,x_5,x_6 &\geq 0
+  \end{aligned}
+\end{aligned}
+\end{equation*}
+
+a continuación obtenemos un \emph{tablero simplex} despejando las
+variables de holgura.
+
+\begin{equation*}
+  \begin{aligned}
+  x_3 &= 2x_1+x_2\\
+  x_4 &=2+2x_1-x_2\\
+  x_5 &=12-3x_1-2x_2\\
+  x_6 &=-1+x_1+x_2\\
+  \hline
+  z &=\phantom{-1} +2x_1+x_2
+  
+\end{aligned}
+\end{equation*}
+
+\end{document}
